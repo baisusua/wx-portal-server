@@ -19,7 +19,7 @@ class User extends Service {
             return error;
         }
     }
-    async isExistUser(username, email, phone, wechat_uid) {
+    async isExistUser(username, email, phone, we_web_uid) {
         if (username) {
             try {
                 const res = await this.ctx.model.User.isExist(username, false, false, false);
@@ -44,18 +44,18 @@ class User extends Service {
                 return error;
             }
         }
-        if (wechat_uid) {
+        if (we_web_uid) {
             try {
-                const res = await this.ctx.model.User.isExist(false, false, false, wechat_uid);
+                const res = await this.ctx.model.User.isExist(false, false, false, we_web_uid);
                 return res;
             } catch (error) {
                 return error;
             }
         }
     }
-    async getNP(wechat_uid){
+    async getNP(we_web_uid){
         try {
-            const res = await this.ctx.model.User.getNP(wechat_uid);
+            const res = await this.ctx.model.User.getNP(we_web_uid);
             // const ps = crypto.createHmac('sha256', 'MosesAndKround').update(password).digest('hex');
             return res;
         } catch (error) {

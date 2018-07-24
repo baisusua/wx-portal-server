@@ -33,7 +33,7 @@ class UserController extends Controller {
 			result: 'ok'
 		};
 	}
-	async getNP(wechat_uid){
+	async getNP(we_web_uid){
 
 	}
 }

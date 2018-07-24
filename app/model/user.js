@@ -17,7 +17,8 @@ module.exports = app => {
         portrait: STRING,
         phone: STRING,
         email: STRING,
-        wechat_uid: STRING,
+        we_app_uid: STRING,
+        we_web_uid: STRING,
         realname: STRING, //真实姓名
         card_id: STRING, //身份证ID等
         card_type: STRING, //身份证，护照等
@@ -45,10 +46,17 @@ module.exports = app => {
             }
         });
     }
-    User.findByUid = function (wechat_uid) {
+    User.findByWebid = function (we_web_uid) {
         return this.findOne({
             where: {
-                wechat_uid: wechat_uid
+                we_web_uid: we_web_uid
+            }
+        });
+    }
+    User.findByAppid = function (we_app_uid) {
+        return this.findOne({
+            where: {
+                we_app_uid: we_app_uid
             }
         });
     }
@@ -59,7 +67,7 @@ module.exports = app => {
             }
         });
     }
-    User.isExist = function (username, phone, email, wechat_uid) {
+    User.isExist = function (username, phone, email, we_web_uid, we_app_uid) {
         if (username) {
             return this.findOne({
                 where: {
@@ -81,10 +89,17 @@ module.exports = app => {
                 }
             });
         }
-        if (wechat_uid) {
+        if (we_web_uid) {
             return this.findOne({
                 where: {
-                    wechat_uid: wechat_uid
+                    we_web_uid: we_web_uid
+                }
+            });
+        }
+        if (we_app_uid) {
+            return this.findOne({
+                where: {
+                    we_app_uid: we_app_uid
                 }
             });
         }
